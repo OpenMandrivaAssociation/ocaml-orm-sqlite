@@ -1,13 +1,13 @@
 Name:           ocaml-orm-sqlite
 Version:        0.2
-Release:        %mkrel 1
+Release:        2
 Summary:        Sql_orm provides an "Object-Relational Mapper" interface between a Sqlite3 database and OCaml
 License:        ISC
 Group:          Development/Other
 URL:            http://wiki.github.com/avsm/ocaml-orm-sqlite
 Source0:        ocaml-orm-sqlite-0.2.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 BuildRequires:  ocaml-findlib
+BuildRequires:  ocaml
 BuildRequires:  ocaml-sqlite-devel
 
 %description
@@ -35,16 +35,12 @@ make all
 mkdir -p doc && ocamldoc -d doc -html sql_orm.mli
 
 %install
-rm -rf %{buildroot}
 export DESTDIR=%{buildroot}
 export OCAMLFIND_DESTDIR=%{buildroot}/%{_libdir}/ocaml
 export DLLDIR=$OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/sql_orm
 make install
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
@@ -61,4 +57,11 @@ rm -rf %{buildroot}
 %{_libdir}/ocaml/sql_orm/*.a
 %{_libdir}/ocaml/sql_orm/*.cmxa
 %{_libdir}/ocaml/sql_orm/*.mli
+
+
+
+%changelog
+* Fri Sep 11 2009 Florent Monnier <blue_prawn@mandriva.org> 0.2-1mdv2010.0
++ Revision: 438516
+- import ocaml-orm-sqlite
 
