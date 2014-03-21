@@ -1,14 +1,17 @@
-Name:           ocaml-orm-sqlite
-Version:        0.2
-Release:        2
-Summary:        Sql_orm provides an "Object-Relational Mapper" interface between a Sqlite3 database and OCaml
-License:        ISC
-Group:          Development/Other
-URL:            http://wiki.github.com/avsm/ocaml-orm-sqlite
-Source0:        ocaml-orm-sqlite-0.2.tar.bz2
-BuildRequires:  ocaml-findlib
-BuildRequires:  ocaml
-BuildRequires:  ocaml-sqlite-devel
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
+Summary:	An "Object-Relational Mapper" interface between a Sqlite3 database and OCaml
+Name:		ocaml-orm-sqlite
+Version:	0.2
+Release:	3
+License:	ISC
+Group:		Development/Other
+Url:		http://wiki.github.com/avsm/ocaml-orm-sqlite
+Source0:	ocaml-orm-sqlite-0.2.tar.bz2
+BuildRequires:	ocaml
+BuildRequires:	ocaml-findlib
+BuildRequires:	ocaml-sqlite-devel
 
 %description
 You provide a schema of the type of objects you want to store in the database,
@@ -18,14 +21,32 @@ and an OCaml source file is generated with modules that:
  * retrieve objects from the database by searching from keys
  * modify fields and save them back to the database.
 
-%package        devel
-Summary:        Development files for %{name}
-Group:          Development/Other
-Requires:       %{name} = %{version}-%{release}
+%files
+%doc LICENSE NEWS TODO README
+%dir %{_libdir}/ocaml/sql_orm
+%{_libdir}/ocaml/sql_orm/META
+%{_libdir}/ocaml/sql_orm/*.cma
+%{_libdir}/ocaml/sql_orm/*.cmi
 
-%description    devel
+#----------------------------------------------------------------------------
+
+%package devel
+Summary:	Development files for %{name}
+Group:		Development/Other
+Requires:	%{name} = %{EVRD}
+
+%description devel
 The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
+
+%files devel
+%doc LICENSE
+%doc doc/ examples/ tests/
+%{_libdir}/ocaml/sql_orm/*.a
+%{_libdir}/ocaml/sql_orm/*.cmxa
+%{_libdir}/ocaml/sql_orm/*.mli
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -41,27 +62,4 @@ export DLLDIR=$OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/stublibs
 mkdir -p $OCAMLFIND_DESTDIR/sql_orm
 make install
-
-%files
-%defattr(-,root,root)
-%doc LICENSE NEWS TODO README
-%dir %{_libdir}/ocaml/sql_orm
-%{_libdir}/ocaml/sql_orm/META
-%{_libdir}/ocaml/sql_orm/*.cma
-%{_libdir}/ocaml/sql_orm/*.cmi
-
-%files devel
-%defattr(-,root,root)
-%doc LICENSE
-%doc doc/ examples/ tests/
-%{_libdir}/ocaml/sql_orm/*.a
-%{_libdir}/ocaml/sql_orm/*.cmxa
-%{_libdir}/ocaml/sql_orm/*.mli
-
-
-
-%changelog
-* Fri Sep 11 2009 Florent Monnier <blue_prawn@mandriva.org> 0.2-1mdv2010.0
-+ Revision: 438516
-- import ocaml-orm-sqlite
 
