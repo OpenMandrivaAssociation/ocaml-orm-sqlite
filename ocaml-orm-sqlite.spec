@@ -4,7 +4,7 @@
 Summary:	An "Object-Relational Mapper" interface between a Sqlite3 database and OCaml
 Name:		ocaml-orm-sqlite
 Version:	0.2
-Release:	3
+Release:	4
 License:	ISC
 Group:		Development/Other
 Url:		http://wiki.github.com/avsm/ocaml-orm-sqlite
