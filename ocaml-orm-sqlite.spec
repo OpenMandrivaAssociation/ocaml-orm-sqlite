@@ -7,7 +7,7 @@ Version:	0.2
 Release:	4
 License:	ISC
 Group:		Development/Other
-Url:		http://wiki.github.com/avsm/ocaml-orm-sqlite
+Url:		https://wiki.github.com/avsm/ocaml-orm-sqlite
 Source0:	ocaml-orm-sqlite-0.2.tar.bz2
 BuildRequires:	ocaml
 BuildRequires:	ocaml-findlib
