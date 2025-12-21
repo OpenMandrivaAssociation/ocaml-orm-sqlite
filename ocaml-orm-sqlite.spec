@@ -9,6 +9,7 @@ License:	ISC
 Group:		Development/Other
 Url:		https://wiki.github.com/avsm/ocaml-orm-sqlite
 Source0:	ocaml-orm-sqlite-0.2.tar.bz2
+BuildRequires:	make
 BuildRequires:	ocaml
 BuildRequires:	ocaml-findlib
 BuildRequires:	ocaml-sqlite-devel
